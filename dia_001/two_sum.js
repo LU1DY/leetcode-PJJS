@@ -19,7 +19,7 @@ function two_sum(nums, target) {
   return resultado;
 }
 
-const nums = [3, 3];
+const nums = [3, 2, 4];
 target = 6;
 
 const resultado = two_sum(nums, target);
