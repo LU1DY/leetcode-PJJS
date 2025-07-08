@@ -12,8 +12,8 @@ def two_sum(nums, target):
     return resultado
 
 
-nums = [3, 4, 2]
-target = 6
+nums = [2, 7, 11, 15]
+target = 9
 
 resultado = two_sum(nums, target)
 print(resultado)
