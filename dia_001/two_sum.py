@@ -1,19 +1,21 @@
 def two_sum(nums, target):
     resultado = []
-    ignore = 0.1
-    while len(resultado) != 2:
-        for i in range(len(nums)):
-            if nums[i] > target or nums[i] == ignore:
-                pass
-            else:
-                resultado.append(i)
-                if len(resultado) == 2 and nums[resultado[0]] + nums[resultado[1]] != target:
-                    ignore = resultado.pop(0)
+    for i, item in enumerate(nums):
+        complemento = target - item
+        if complemento in nums:
+            for x, valor in enumerate(nums):
+                if x == i or complemento != valor:
+                    continue
+                else:
+                    resultado = [i, x]
+                    break
+            
     return resultado
 
 
-nums = [2, 7, 11, 15]
-target = 9
+nums = [3,2,4]
+target = 6
 
 resultado = two_sum(nums, target)
 print(resultado)
+

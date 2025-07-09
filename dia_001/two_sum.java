@@ -1,26 +1,19 @@
 // Versão da IDE, VSCode e IntelliJ
 package dia_001;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 class Main {
     public static List<Integer> two_sum(List<Integer> nums, int target) {
-        List<Integer> resultado = new ArrayList<Integer>();
-        int ignore = -1;
-        while (resultado.size() != 2) {
-            for (int i = 0; i < nums.size(); i++) {
-                if (nums.get(i) > target || (ignore != -1 && nums.get(i).equals(nums.get(ignore)))) {
-                } else {
-                    resultado.add(i);
-                    if (resultado.size() == 2 && nums.get(resultado.get(0)) + nums.get(resultado.get(1)) != target) {
-                        ignore = resultado.remove(0);
-                    }
-                }
+        Map<Integer, Integer> resultado = new HashMap<>();
+        for (int i = 0; i < nums.size(); i++) {
+            int complemento = target - nums.get(i);
+            if (resultado.containsKey(complemento)) {
+                return Arrays.asList(resultado.get(complemento), i);
             }
+            resultado.put(nums.get(i), i);
         }
-        return resultado;
+        return new ArrayList<>();
     }
 
 
@@ -34,22 +27,16 @@ class Main {
 
 // Versão para o LeetCode: 
 /*
- class Solution {
+class Solution {
     public int[] twoSum(int[] nums, int target) {
-        int ignore = -1;
-         List<Integer> resultado = new ArrayList<Integer>();
-        while (resultado.size() != 2) {
-            for (int i = 0; i < nums.length; i++) {
-                if (nums[i] > target || (ignore != -1 && nums[i] == nums[ignore])) {
-                } else {
-                    resultado.add(i);
-                    if (resultado.size() == 2 && nums[resultado.get(0)] + nums[resultado.get(1)] != target) {
-                        ignore = resultado.remove(0);
-                    }
-                }
+Map<Integer, Integer> resultado = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int complemento = target - nums[i];
+            if (resultado.containsKey(complemento)) {
+                return new int[] { resultado.get(complemento), i };
             }
+            resultado.put(nums[i], i);
         }
-        return new int[] { resultado.get(0), resultado.get(1) };
-    }
-}
+        return new int[] {};
+}}
 */
